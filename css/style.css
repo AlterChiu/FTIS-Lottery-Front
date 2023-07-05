@@ -181,10 +181,6 @@ img {
     gap: 1rem;
   }
 
-  .wheel-section {
-    align-self: flex-end;
-  }
-
   .wheel-rotate {
     width: 70%;
     height: 70%;

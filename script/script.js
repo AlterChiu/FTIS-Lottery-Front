@@ -11,5 +11,5 @@ btn.addEventListener('click', function () {
   setTimeout(() => {
     wheel.classList.remove('active');
     btn.innerText = '開始抽獎';
-  }, 3000);
+  }, 2000);
 });
