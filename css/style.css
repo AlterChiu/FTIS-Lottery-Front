@@ -8,10 +8,14 @@ img {
   width: 100%;
 }
 
+i {
+  margin-right: 0.5rem;
+}
+
 .container {
   max-width: 1920px;
   height: 100vh;
-  background-image: url('../images/bg-1.png');
+  background-image: url('../images/bg-2.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
