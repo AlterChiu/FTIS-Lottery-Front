@@ -82,10 +82,12 @@ img {
 /* main section */
 .main-section {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   gap: 3.5rem;
-  margin-top: 16%;
+  margin-top: 18%;
+  position: relative;
+  z-index: 5;
 }
 
 .wheel-section {
@@ -129,6 +131,7 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  margin-top: 2.5rem;
 }
 
 @keyframes rotate {
@@ -172,6 +175,14 @@ img {
 
   .title img {
     width: 93%;
+  }
+
+  .main-section {
+    gap: 1rem;
+  }
+
+  .wheel-section {
+    align-self: flex-end;
   }
 
   .wheel-rotate {
