@@ -7,31 +7,46 @@ const display = document.querySelector('.display-content');
 // const span = document.createElement('span');
 
 const arr = [
-  '資訊室-繆照慶-1',
-  '資訊室-繆照慶-2',
-  '資訊室-繆照慶-3',
-  '資訊室-繆照慶-4',
-  '資訊室-繆照慶-5',
-  '資訊室-繆照慶-6',
-  '資訊室-繆照慶-8',
-  '資訊室-繆照慶-9',
-  '資訊室-繆照慶-10',
-  '資訊室-繆照慶-11',
-  '資訊室-繆照慶-12',
-  '資訊室-繆照慶-13',
-  '資訊室-繆照慶-14',
-  '資訊室-繆照慶-15',
-  '資訊室-繆照慶-16',
-  '資訊室-繆照慶-17',
-  '資訊室-繆照慶-18',
-  '資訊室-繆照慶-19',
-  '資訊室-繆照慶-21',
-  '資訊室-繆照慶-22',
-  '資訊室-繆照慶-23',
-  '資訊室-繆照慶-24',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
+  '資訊室-繆照慶',
 ];
 
 runBtn.addEventListener('click', function () {
+  // clear area
+  // const displayArea = document.querySelector('.display-content');
+  // displayArea.innerHTML = '';
+
+  // button and wheel
   wheel.classList.add('active');
   runBtn.classList.add('scale');
   runBtn.innerText = '抽獎中...';
@@ -50,7 +65,8 @@ runBtn.addEventListener('click', function () {
     span.innerText = '開始抽獎';
     runBtn.append(span);
 
-    // display award content
+    // display award content one click add one person
+    /*
     const displayName = document.createElement('h3');
     const nameIcon = document.createElement('i');
     nameIcon.setAttribute('class', 'fa-solid fa-gift');
@@ -60,10 +76,26 @@ runBtn.addEventListener('click', function () {
     displayName.append(nameIcon);
     displayName.append(nameSpan);
     display.append(displayName);
+    */
+
+    // display award content one click display all
+    for (let i = 0; i < input.value; i++) {
+      console.log(arr[i]);
+      const displayName = document.createElement('h3');
+      const nameIcon = document.createElement('i');
+      nameIcon.setAttribute('class', 'fa-solid fa-gift');
+      const nameSpan = document.createElement('span');
+      displayName.setAttribute('class', 'name');
+      nameSpan.innerText = `${arr[i]}`;
+      displayName.append(nameIcon);
+      displayName.append(nameSpan);
+      display.append(displayName);
+    }
   }, 2000);
   console.log(input.value);
 });
 
+// clear
 clearBtn.addEventListener('click', function () {
   const displayArea = document.querySelector('.display-content');
   displayArea.innerHTML = '';
