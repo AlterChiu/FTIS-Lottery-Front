@@ -64,32 +64,30 @@ runBtn.addEventListener('click', function () {
     span.innerText = '開始抽獎';
     runBtn.append(span);
 
-    // display award content one click add one person
-    /*
-    const displayName = document.createElement('h3');
-    const nameIcon = document.createElement('i');
-    nameIcon.setAttribute('class', 'fa-solid fa-gift');
-    const nameSpan = document.createElement('span');
-    displayName.setAttribute('class', 'name');
-    nameSpan.innerText = '資訊室-繆照慶';
-    displayName.append(nameIcon);
-    displayName.append(nameSpan);
-    display.append(displayName);
-    */
-
     // display award content one click display all
-    for (let i = 0; i < input.value; i++) {
-      console.log(arr[i]);
-      const displayName = document.createElement('h3');
-      const nameIcon = document.createElement('i');
-      nameIcon.setAttribute('class', 'fa-solid fa-gift');
-      const nameSpan = document.createElement('span');
-      displayName.setAttribute('class', 'name');
-      nameSpan.innerText = `${arr[i]}`;
-      displayName.append(nameIcon);
-      displayName.append(nameSpan);
-      display.append(displayName);
+    const emptyArr = [];
+    if (arr.length > 0 && arr.length - input.value >= 0) {
+      for (let i = 0; i < input.value; i++) {
+        const random = Math.floor(Math.random() * arr.length);
+        // push新值
+        emptyArr.push(arr[random]);
+        // display award area
+        const displayName = document.createElement('h3');
+        const nameIcon = document.createElement('i');
+        nameIcon.setAttribute('class', 'fa-solid fa-gift');
+        const nameSpan = document.createElement('span');
+        displayName.setAttribute('class', 'name');
+        nameSpan.innerText = `${emptyArr[i]}`;
+        displayName.append(nameIcon);
+        displayName.append(nameSpan);
+        display.append(displayName);
+        // 移除原本arr中的值
+        arr.splice(random, 1);
+      }
+    } else {
+      console.log('arr值不足');
     }
+    console.log(emptyArr, arr);
   }, 2000);
   console.log(input.value);
 });
