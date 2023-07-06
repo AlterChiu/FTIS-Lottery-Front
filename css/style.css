@@ -12,10 +12,14 @@ i {
   margin-right: 0.5rem;
 }
 
+h3 {
+  font-size: 1.4rem;
+}
+
 .container {
   max-width: 1920px;
   height: 100vh;
-  background-image: url('../images/bg-2.png');
+  background-image: url('../images/bg-3.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -35,6 +39,12 @@ i {
   background: none;
   border: 1px solid #fff;
   color: #fff;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #b21702;
 }
 
 .scale {
@@ -101,6 +111,8 @@ i {
   justify-content: center;
   gap: 1rem;
   max-width: 600px;
+  flex: 1;
+  margin-right: -80px;
 }
 
 .wheel-inside {
@@ -131,11 +143,69 @@ i {
 }
 
 .display {
-  color: #fff;
+  flex: 1;
+  color: #ffd700;
+  font-weight: bold;
+  max-width: 900px;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-top: 2.5rem;
+  gap: 1.5rem;
+  /* background-color: #fff; */
+  border-radius: 10px;
+  padding: 1.2rem 1.2rem;
+  color: #ffd700;
+}
+
+/* function area */
+.function-area {
+  margin-top: 1rem;
+}
+
+select {
+  border: 1px solid #fff;
+  padding: 0.6rem 1.2rem;
+  outline: none;
+  background: none;
+  border-radius: 10px;
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  color: #fff;
+}
+
+option {
+  color: #fff;
+  background: #b21702;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.6rem 1.2rem;
+  outline: none;
+  border: 1px solid #fff;
+  font-size: 1.4rem;
+  background: none;
+  border-radius: 10px;
+  color: #fff;
+  margin-right: 1rem;
+  width: 130px;
+}
+
+::placeholder {
+  color: #fff;
+  font-weight: bold;
+}
+
+.run-btn {
+  margin-right: 1rem;
+}
+
+.clear {
+  margin-right: 1rem;
 }
 
 @keyframes rotate {
@@ -173,8 +243,12 @@ i {
 }
 
 @media (max-width: 1600px) {
+  h3 {
+    font-size: 1.4rem;
+  }
+
   .title {
-    top: 12%;
+    top: 10%;
   }
 
   .title img {
@@ -183,6 +257,10 @@ i {
 
   .main-section {
     gap: 1rem;
+  }
+
+  .wheel-section {
+    margin-right: -80px;
   }
 
   .wheel-rotate {
@@ -200,9 +278,15 @@ i {
     width: 65%;
   }
 
-  .display {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+  .gift-left img {
+    width: 55%;
+  }
+
+  .gift-right {
+    right: -382px;
+  }
+
+  .gift-right img {
+    width: 55%;
   }
 }
