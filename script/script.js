@@ -40,56 +40,59 @@ const arr = [
   '資訊室-繆32慶',
 ];
 
-runBtn.addEventListener('click', function () {
-  const displayArea = document.querySelector('.display-content');
-  displayArea.innerHTML = '';
+document.addEventListener('keydown', function (e) {
+  if (e.code === 'Space') {
+    const displayArea = document.querySelector('.display-content');
+    displayArea.innerHTML = '';
+    console.log(e.code);
 
-  // button and wheel
-  wheel.classList.add('active');
-  runBtn.classList.add('scale');
-  runBtn.innerText = '抽獎中...';
-  setTimeout(() => {
-    runBtn.classList.remove('scale');
-  }, 100);
+    // button and wheel
+    wheel.classList.add('active');
+    runBtn.classList.add('scale');
+    runBtn.innerText = '抽獎中...';
+    setTimeout(() => {
+      runBtn.classList.remove('scale');
+    }, 100);
 
-  setTimeout(() => {
-    wheel.classList.remove('active');
+    setTimeout(() => {
+      wheel.classList.remove('active');
 
-    // button active and icon
-    runBtn.innerText = '';
-    const icon = document.createElement('i');
-    icon.setAttribute('class', 'fa-solid fa-gift');
-    runBtn.append(icon);
-    const span = document.createElement('span');
-    span.innerText = '開始抽獎';
-    runBtn.append(span);
+      // button active and icon
+      runBtn.innerText = '';
+      const icon = document.createElement('i');
+      icon.setAttribute('class', 'fa-solid fa-gift');
+      runBtn.append(icon);
+      const span = document.createElement('span');
+      span.innerText = '開始抽獎';
+      runBtn.append(span);
 
-    // display award content one click display all
-    const emptyArr = [];
-    if (arr.length > 0 && arr.length - input.value >= 0) {
-      for (let i = 0; i < input.value; i++) {
-        const random = Math.floor(Math.random() * arr.length);
-        // push新值
-        emptyArr.push(arr[random]);
-        // display award area
-        const displayName = document.createElement('h3');
-        const nameIcon = document.createElement('i');
-        nameIcon.setAttribute('class', 'fa-solid fa-gift');
-        const nameSpan = document.createElement('span');
-        displayName.setAttribute('class', 'name');
-        nameSpan.innerText = `${emptyArr[i]}`;
-        displayName.append(nameIcon);
-        displayName.append(nameSpan);
-        display.append(displayName);
-        // 移除原本arr中的值
-        arr.splice(random, 1);
+      // display award content one click display all
+      const emptyArr = [];
+      if (arr.length > 0 && arr.length - input.value >= 0) {
+        for (let i = 0; i < input.value; i++) {
+          const random = Math.floor(Math.random() * arr.length);
+          // push新值
+          emptyArr.push(arr[random]);
+          // display award area
+          const displayName = document.createElement('h3');
+          const nameIcon = document.createElement('i');
+          nameIcon.setAttribute('class', 'fa-solid fa-gift');
+          const nameSpan = document.createElement('span');
+          displayName.setAttribute('class', 'name');
+          nameSpan.innerText = `${emptyArr[i]}`;
+          displayName.append(nameIcon);
+          displayName.append(nameSpan);
+          display.append(displayName);
+          // 移除原本arr中的值
+          arr.splice(random, 1);
+        }
+      } else {
+        console.log('arr值不足');
       }
-    } else {
-      console.log('arr值不足');
-    }
-    console.log(emptyArr, arr);
-  }, 2000);
-  console.log(input.value);
+      console.log(emptyArr, arr);
+    }, 2000);
+    console.log(input.value);
+  }
 });
 
 // clear btn
