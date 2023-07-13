@@ -3,6 +3,7 @@ const wheel = document.querySelector('.wheel-rotate');
 const clearBtn = document.querySelector('.clear');
 const input = document.querySelector('input');
 const display = document.querySelector('.display-content');
+const awardsListArea = document.querySelector('.awards-list-area');
 
 // 32 person
 const arr = [
@@ -38,6 +39,17 @@ const arr = [
   '資訊室-繆30慶',
   '資訊室-繆31慶',
   '資訊室-繆32慶',
+];
+
+const awardArr = [
+  '測試項目',
+  '獎金一千元',
+  '獎金二千元',
+  '獎金三千元',
+  '獎金四千元',
+  '獎金五千元',
+  '獎金六千元',
+  '獎金七千元',
 ];
 
 document.addEventListener('keydown', function (e) {
@@ -101,3 +113,14 @@ clearBtn.addEventListener('click', function () {
   displayArea.innerHTML = '';
   input.value = '';
 });
+
+// add awards
+function importAwards() {
+  for (let i = 0; i < awardArr.length; i++) {
+    const creatEl = document.createElement('option');
+    creatEl.innerText = `${awardArr[i]}`;
+    awardsListArea.append(creatEl);
+  }
+}
+
+importAwards();
