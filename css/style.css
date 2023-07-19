@@ -19,7 +19,7 @@ h3 {
 .container {
   max-width: 1920px;
   height: 100vh;
-  background-image: url('../images/bg-3.png');
+  background-image: url('../images/bg-final.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -49,48 +49,6 @@ h3 {
 
 .scale {
   transform: scale(0.8);
-}
-
-.title {
-  position: absolute;
-  top: 8%;
-  left: 18%;
-  z-index: 5;
-}
-
-.title img {
-  width: 120%;
-}
-
-.ribbon {
-  position: absolute;
-  top: -110px;
-  left: -135px;
-}
-
-.ribbon img {
-  width: 70%;
-}
-
-.gift-left {
-  position: absolute;
-  bottom: -55px;
-  left: -70px;
-}
-
-.gift-left img {
-  width: 70%;
-}
-
-.gift-right {
-  position: absolute;
-  bottom: -80px;
-  right: -320px;
-  z-index: 3;
-}
-
-.gift-right img {
-  width: 75%;
 }
 
 /* main section */
@@ -218,6 +176,15 @@ input {
   }
 }
 
+.sub-title {
+  position: absolute;
+  font-size: 5rem;
+  top: 18%;
+  left: 48%;
+  font-weight: bold;
+  color: gold;
+}
+
 .ballon {
   position: absolute;
   top: 10px;
@@ -247,14 +214,6 @@ input {
     font-size: 1.4rem;
   }
 
-  .title {
-    top: 10%;
-  }
-
-  .title img {
-    width: 93%;
-  }
-
   .main-section {
     gap: 1rem;
   }
@@ -276,17 +235,5 @@ input {
 
   .pointer-img img {
     width: 65%;
-  }
-
-  .gift-left img {
-    width: 55%;
-  }
-
-  .gift-right {
-    right: -382px;
-  }
-
-  .gift-right img {
-    width: 55%;
   }
 }
