@@ -16,7 +16,7 @@ namespace DouImp.Controllers
             return View();
         }
 
-        internal static System.Data.Entity.DbContext _dbContext = new DouModelContextExt();
+        internal static System.Data.Entity.DbContext _dbContext = new DrawGameContextExt();
         protected override Dou.Models.DB.IModelEntity<Role> GetModelEntity()
         {
             return new Dou.Models.DB.ModelEntity<Role>(_dbContext);

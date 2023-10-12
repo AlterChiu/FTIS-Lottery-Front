@@ -22,7 +22,7 @@ namespace DouImp.Controllers
             return View();
         }
 
-        internal static System.Data.Entity.DbContext _dbContext = new DouModelContextExt();
+        internal static System.Data.Entity.DbContext _dbContext = new DrawGameContextExt();
         protected override Dou.Models.DB.IModelEntity<User> GetModelEntity()
         {
             return new Dou.Models.DB.ModelEntity<User>(_dbContext);
@@ -32,7 +32,7 @@ namespace DouImp.Controllers
         //    User user = FindUser("admin");
         //    user.LastRenewPassword = DateTime.Now.AddHours(- Dou.Context.Config.RenewPasswordInterval- 1);
         //    UpdateDBObject(GetModelEntity(), new User[] { user });
-            
+
         //    return Json(new { ok=true}, JsonRequestBehavior.AllowGet);
         //}
 
@@ -59,7 +59,7 @@ namespace DouImp.Controllers
         public override ActionResult DouLogin(User user, string returnUrl, bool redirectLogin = false)
         //public ActionResult DouLoginNonSso(User user, string returnUrl, bool redirectLogin = false)
         {
-            if (DouUnobtrusiveSession.Session[SkipSsoKey] ==null)
+            if (DouUnobtrusiveSession.Session[SkipSsoKey] == null)
             {
                 //取sso token
                 var _ssotoken = HttpContext.Request.QueryString["ssotoken"];
@@ -110,7 +110,7 @@ namespace DouImp.Controllers
             }
             ActionResult v = base.DouLogin(user, returnUrl, redirectLogin);
 
-           
+
             if (ViewBag.ErrorMessage != null)
             {
                 ViewBag.LoginUrl = Dou.Context.Config.LoginPage;
@@ -172,7 +172,7 @@ namespace DouImp.Controllers
             {
                 throw new Exception(ttask.Result.Message);
             }
-          
+
         }
 
         /*********Sso code end ************/

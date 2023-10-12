@@ -495,3 +495,8 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.CoreCompileInput
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.CopyComplete
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.pdb
+D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.AssemblyReference.cache
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Net.Http.Formatting.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.pdb
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll.config

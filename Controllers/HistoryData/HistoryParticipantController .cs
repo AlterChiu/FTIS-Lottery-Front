@@ -14,12 +14,13 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{    
+{
     [Dou.Misc.Attr.MenuDef(Id = "HistoryParticipant", Name = "參與者名單", MenuPath = "歷史專區", Action = "Index", Index = 3, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     [Dou.Misc.Attr.AutoLogger(Status = LoggerEntity.LoggerDataStatus.All, Content = Dou.Misc.Attr.AutoLoggerAttribute.LogContent.AssignContent,
         AssignContent = "KEY:{FKey}, 字串:{FText}")]
     public class HistoryParticipantController : Dou.Controllers.AGenericModelController<PARTICIPANT>
     {
+        private DrawGameContextExt db = new DrawGameContextExt();
         // GET: Country
         public ActionResult Index()
         {
@@ -34,7 +35,7 @@ namespace DouImp.Controllers
 
             //20230814, add by markhong 初始沒有篩選條件時不顯示資料
             if (DCode == null && Fno == null && ACTID == null)
-                 return base.GetDataDBObject(dbEntity, paras).Take(0);
+                return base.GetDataDBObject(dbEntity, paras).Take(0);
             return base.GetDataDBObject(dbEntity, paras);
         }
 
@@ -51,7 +52,7 @@ namespace DouImp.Controllers
 
         protected override IModelEntity<PARTICIPANT> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<PARTICIPANT>(FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext());
+            return new Dou.Models.DB.ModelEntity<PARTICIPANT>(this.db);
         }
 
 

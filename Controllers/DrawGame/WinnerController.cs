@@ -11,12 +11,14 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{    
+{
     [Dou.Misc.Attr.MenuDef(Id = "Winner", Name = "得獎者清單", MenuPath = "抽獎專區", Action = "Index", Index = 4, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     [Dou.Misc.Attr.AutoLogger(Status = LoggerEntity.LoggerDataStatus.All, Content = Dou.Misc.Attr.AutoLoggerAttribute.LogContent.AssignContent,
         AssignContent = "KEY:{FKey}, 字串:{FText}")]
     public class WinnerController : Dou.Controllers.AGenericModelController<WINNER>
     {
+
+        private DrawGameContextExt db = new DrawGameContextExt();
         // GET: Country
         public ActionResult Index()
         {
@@ -54,20 +56,16 @@ namespace DouImp.Controllers
             {
                 if (obj.ACTID != null && obj.PRIZE != null)
                 {
-                    using (var cxt = FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext())
+                    _ISSPEC = this.db.PRIZES.Where(s => s.ACTID == obj.ACTID && s.PID.ToString() == obj.PRIZE).First().ISSPEC;
+                    if (!_ISSPEC)
                     {
-                        _ISSPEC = cxt.PRIZE.Where(s=>s.ACTID==obj.ACTID && s.PID.ToString() == obj.PRIZE).First().ISSPEC;
-                        if (!_ISSPEC)
-                            //2.
-                            using (var cxt2 = FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext())
-                            {
-                                var pp = cxt.PARTICIPANT.Where(s => s.ACTID == obj.ACTID && s.FNO == obj.FNO).ToList();
-                                if (pp.Count > 0) 
-                                    pp[0].ISWON = false;
-                                var douPP = new Dou.Models.DB.ModelEntity<PARTICIPANT>(cxt2);
-                                douPP.Update(pp);
-                            }
+                        var pp = this.db.PARTICIPANTS.Where(s => s.ACTID == obj.ACTID && s.FNO == obj.FNO).ToList();
+                        if (pp.Count > 0)
+                            pp[0].ISWON = false;
+                        var douPP = new Dou.Models.DB.ModelEntity<PARTICIPANT>(this.db);
+                        douPP.Update(pp);
                     }
+
                 }
             }
             base.DeleteDBObject(dbEntity, objs);
@@ -78,7 +76,7 @@ namespace DouImp.Controllers
             FtisHelperDrawGame.DB.Helpe.Acts.ResetGetPrize();
             FtisHelperDrawGame.DB.Helpe.Acts.ResetGetAllPrizes();
             FtisHelperDrawGame.DB.PrizesSelectItemsClassImp.ResetPrizes();
-            return new Dou.Models.DB.ModelEntity<WINNER>(FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext());
+            return new Dou.Models.DB.ModelEntity<WINNER>(this.db);
         }
     }
 }

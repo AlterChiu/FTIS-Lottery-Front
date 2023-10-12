@@ -19,7 +19,7 @@ namespace DouImp
         public void Configuration(IAppBuilder app)
         {
             //20230421, ADD設定連線方式(true=測試, false=正式) by markhong
-            FtisDrawGameModelContext.LocalTest = bool.Parse(ConfigurationSettings.AppSettings["LocalTest"].ToString());
+            //FtisDrawGameModelContext.LocalTest = bool.Parse(ConfigurationSettings.AppSettings["LocalTest"].ToString());
 
             // 如需如何設定應用程式的詳細資訊，請瀏覽 https://go.microsoft.com/fwlink/?LinkID=316888
             var sd = System.Environment.MachineName;

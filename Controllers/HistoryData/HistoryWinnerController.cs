@@ -11,12 +11,13 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{    
+{
     [Dou.Misc.Attr.MenuDef(Id = "HistoryWinner", Name = "得獎者清單", MenuPath = "歷史專區", Action = "Index", Index = 4, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     [Dou.Misc.Attr.AutoLogger(Status = LoggerEntity.LoggerDataStatus.All, Content = Dou.Misc.Attr.AutoLoggerAttribute.LogContent.AssignContent,
         AssignContent = "KEY:{FKey}, 字串:{FText}")]
     public class HistoryWinnerController : Dou.Controllers.AGenericModelController<WINNER>
     {
+        private DrawGameContextExt db = new DrawGameContextExt();
         // GET: Country
         public ActionResult Index()
         {
@@ -49,7 +50,7 @@ namespace DouImp.Controllers
 
         protected override IModelEntity<WINNER> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<WINNER>(FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext());
+            return new Dou.Models.DB.ModelEntity<WINNER>(this.db);
         }
     }
 }

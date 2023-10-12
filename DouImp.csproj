@@ -83,8 +83,9 @@
     <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="FtisHelperDrawGame">
-      <HintPath>..\..\repos\DOULIB\FtisHelperDrawGame\bin\Debug\FtisHelperDrawGame.dll</HintPath>
+    <Reference Include="FtisHelperDrawGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FtisHelperDrawGame\bin\Debug\FtisHelperDrawGame.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -223,7 +224,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\API.cs" />
-    <Compile Include="Models\DouModelContextExt.cs" />
+    <Compile Include="Models\DrawGameContextExt.cs" />
+    <Compile Include="Models\ACTIVITIES.cs" />
+    <Compile Include="Models\DrawGame\Acts.cs" />
+    <Compile Include="Models\DrawGame\DrawGameSelectItems.cs" />
+    <Compile Include="Models\PARTICIPANT.cs" />
+    <Compile Include="Models\PRIZE.cs" />
+    <Compile Include="Models\WINNER.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,12 +12,13 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{    
+{
     [Dou.Misc.Attr.MenuDef(Id = "Activities", Name = "活動", MenuPath = "抽獎專區", Action = "Index", Index = 1, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     [Dou.Misc.Attr.AutoLogger(Status = LoggerEntity.LoggerDataStatus.All, Content = Dou.Misc.Attr.AutoLoggerAttribute.LogContent.AssignContent,
         AssignContent = "KEY:{FKey}, 字串:{FText}")]
     public class ActivitiesController : Dou.Controllers.AGenericModelController<ACTIVITIES>
     {
+        private DrawGameContextExt db = new DrawGameContextExt();
         // GET: Country
         public ActionResult Index()
         {
@@ -91,14 +92,11 @@ namespace DouImp.Controllers
             {
                 if (obj.Prizes.Count > 0)
                 {
-                    foreach(var pp in obj.Prizes)
+                    var me = new Dou.Models.DB.ModelEntity<PRIZE>(this.db);
+                    foreach (var pp in obj.Prizes)
                     {
-                        using (var cxt = FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext())
-                        {
-                            var me = new Dou.Models.DB.ModelEntity<PRIZE>(cxt);
-                            //刪除該活動所有獎項
-                            me.Delete(pp);
-                        }
+                        //刪除該活動所有獎項
+                        me.Delete(pp);
                     }
                 }
             }
@@ -127,7 +125,7 @@ namespace DouImp.Controllers
 
         protected override IModelEntity<ACTIVITIES> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<ACTIVITIES>(FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext());
+            return new Dou.Models.DB.ModelEntity<ACTIVITIES>(this.db);
         }
     }
 }

@@ -14,10 +14,11 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DouImp.Controllers
-{    
+{
     //[Dou.Misc.Attr.MenuDef(Id = "Prize", Name = "獎項清單", MenuPath = "抽獎專區", Action = "Index", Index = 2, Func = Dou.Misc.Attr.FuncEnum.ALL, AllowAnonymous = false)]
     public class PrizeController : Dou.Controllers.AGenericModelController<PRIZE>
     {
+        private DrawGameContextExt db = new DrawGameContextExt();
         // GET: Country
         public ActionResult Index()
         {
@@ -28,8 +29,7 @@ namespace DouImp.Controllers
         {
             var f = objs;
 
-            System.Data.Entity.DbContext _dbContext = new FtisDrawGameModelContext();
-            Dou.Models.DB.IModelEntity<PRIZE> model = new Dou.Models.DB.ModelEntity<PRIZE>(_dbContext);
+            Dou.Models.DB.IModelEntity<PRIZE> model = new Dou.Models.DB.ModelEntity<PRIZE>(this.db);
 
             //var datas = model.GetAll(a => a.ACTID == f.ACTID
             //                    && a.NAME == f.NAME
@@ -90,7 +90,7 @@ namespace DouImp.Controllers
 
         protected override IModelEntity<PRIZE> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<PRIZE>(FtisHelperDrawGame.DB.Helper.CreateFtisDrawGameModelContext());
+            return new Dou.Models.DB.ModelEntity<PRIZE>(this.db);
         }
     }
 }

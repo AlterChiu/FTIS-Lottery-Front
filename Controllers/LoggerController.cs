@@ -21,7 +21,7 @@ namespace DouImp.Controllers
 
         protected override Dou.Models.DB.IModelEntity<Dou.Models.Logger> GetModelEntity()
         {
-            return new Dou.Models.DB.ModelEntity<Dou.Models.Logger>(new DouModelContextExt());
+            return new Dou.Models.DB.ModelEntity<Dou.Models.Logger>(new DrawGameContextExt());
         }
     }
 
