@@ -33,13 +33,9 @@ namespace FtisHelperDrawGame.DB.Helpe
             lock (lockGetAllActs)
             {
                 if (allActs == null)
-                {
-                    var endDate = 
-                    allActs = db.ACTIVITIES.Where(e => DateTime.Now >= e.STARTTIME && DateTime.Now < e.ENDTIME).ToList();
-                    DouHelper.Misc.AddCache(allActs, key);
-                }
+                    DouHelper.Misc.AddCache(db.ACTIVITIES.ToList(), key);
             }
-            return allActs;
+            return DouHelper.Misc.GetCache<List<ACTIVITIES>>(cachetimer, key);
         }
 
         public static void ResetGetAllActs()

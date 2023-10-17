@@ -63,21 +63,12 @@ namespace FtisHelperDrawGame.DB.Model
 
         public virtual ICollection<PRIZE> Prizes
         {
-            //get
-            //{
-            //    var Prizes = Helpe.Acts.GetAllPrizes().Where(a => a.ACTID == this.ACTID).ToList();
-            //    return Prizes;
-            //}
             get; set;
         }
 
+        [NotMapped]
         public virtual ICollection<PARTICIPANT> Participants
         {
-            //get
-            //{
-            //    var Participants = Helpe.Acts.GetAllParticipants().Where(a => a.ACTID == this.ACTID).ToList();
-            //    return Participants;
-            //}
             get; set;
         }
     }

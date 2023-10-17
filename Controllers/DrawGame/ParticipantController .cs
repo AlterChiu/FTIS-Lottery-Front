@@ -4,6 +4,7 @@ using Dou.Models.DB;
 using DouHelper;
 using DouImp.Models;
 using FtisHelperDrawGame.DB;
+using FtisHelperDrawGame.DB.Helpe;
 using FtisHelperDrawGame.DB.Model;
 using Newtonsoft.Json;
 using System;
@@ -27,24 +28,29 @@ namespace DouImp.Controllers
             return View();
         }
 
+        protected override void AddDBObject(IModelEntity<PARTICIPANT> dbEntity, IEnumerable<PARTICIPANT> objs)
+        {
+            foreach (var obj in objs)
+            {
+                if (obj.Name == null)
+                {
+                    var departNickName = Department.GetAllDepartment().Where(e => e.DCode == obj.DCODE && e.IsUsed == "Y").FirstOrDefault();
+                    var userName = Employee.GetAllEmployee().Where(e => e.Fno == e.Fno && e.Quit == false).FirstOrDefault();
+
+                    if (departNickName != null && userName != null)
+                        obj.Name = departNickName + "_" + userName;
+                    else
+                        throw new Exception("查無此員工資料");
+                }
+            }
+            base.AddDBObject(dbEntity , objs);
+        }
+
         protected override IEnumerable<PARTICIPANT> GetDataDBObject(IModelEntity<PARTICIPANT> dbEntity, params KeyValueParams[] paras)
         {
-            var DCode = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "DCODE");
-            var Fno = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "FNO");
-            var ACTID = Dou.Misc.HelperUtilities.GetFilterParaValue(paras, "ACTID");
-
-            //20230814, add by markhong 初始沒有篩選條件時不顯示資料
-            if (DCode == null && Fno == null && ACTID == null)
-                return base.GetDataDBObject(dbEntity, paras).Take(0);
             return base.GetDataDBObject(dbEntity, paras);
         }
-        //protected override IEnumerable<Activity> GetDataDBObject(IModelEntity<ACTIVITIES> dbEntity, params KeyValueParams[] paras)
-        //{
-        //    var iquery = base.GetDataDBObject(dbEntity, paras);
-        //    if (string.IsNullOrEmpty(paras.FirstOrDefault(s => s.key == "sort").value + ""))
-        //        iquery = iquery.OrderBy(s => s.GCode);
-        //    return iquery;
-        //}
+
         public override DataManagerOptions GetDataManagerOptions()
         {
             var options = base.GetDataManagerOptions();

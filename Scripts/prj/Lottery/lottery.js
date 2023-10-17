@@ -5,7 +5,7 @@ var changeActivety = function () {
         $("#Prizes").empty();
         $.ajax({
             type: "POST",
-            url: '@Url.Action("GetAllPrizesByActs")',
+            url: GetAllPrizesByActs,
             dataType: "json",
             data: { groupName: $("#Activities").val() },
             success: function (mems) {
@@ -70,6 +70,8 @@ function clearWinners() {
 
 //顯示得獎者
 function displayWinner(name, department, prize) {
+    var display = $(".display-content");
+
     const displayName = document.createElement('h3');
     const nameIcon = document.createElement('i');
     nameIcon.setAttribute('class', 'fa-solid fa-gift');
@@ -82,20 +84,30 @@ function displayWinner(name, department, prize) {
 }
 
 //20231004, add by markhong 顯示/隱藏Menu
-function isHide() {
+function hideBanner() {
     //console.log($("#SHButton").val());
-    var vbtn = $("#SHButton").val();
-    if (vbtn == 0) {
-        $('.fixed-top').show();
-        $("#SHButton").val(1);
-        $("#SHButton").text("隱藏功能列");
-    }
-    else {
-        $('.fixed-top').hide();
-        $("#SHButton").val(0);
-        $("#SHButton").text("顯示功能列");
-    }
+    addEventListener("resize", () => {
+        if (window.innerHeight == screen.height)
+            $('.fixed-top').hide();
+        else
+            $('.fixed-top').show();
+    });
 };
+
+// 超出範圍時自動刪除最前面出中獎名單
+function autoDeleteFirstWinner() {
+    var content = $(".display-content");
+    content.on("DOMNodeInserted", () => {
+        if (content[0].scrollHeight > content.innerHeight()) {
+            var firstChild = $(".display-content").find('div:first');
+            firstChild.hide({
+                duration: 200, easing: 'linear', complete: function () {
+                    firstChild.remove();
+                }
+            })
+        }
+    })
+}
 
 
 //切換背景圖案
@@ -103,7 +115,7 @@ function submitBackgroundForm() {
     var selectedValue = $("#Activities").val()
     var acttxt = $("#Activities :selected").text();
 
-    $.post('@Url.Action("ChangeBackground")', { selectedValue: selectedValue }, function (data) {
+    $.post(UrlChangeBackground, { selectedValue: selectedValue }, function (data) {
         //console.log("data = " + data[0])
         //20231004, add by markhong 新增無活動背景圖
         if (data[0] == "") {

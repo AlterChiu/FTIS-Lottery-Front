@@ -6,6 +6,7 @@ using FtisHelperDrawGame.DB.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
@@ -46,6 +47,7 @@ namespace DouImp.Controllers
 
             var jstr = JsonConvert.SerializeObject(datas, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             jstr = jstr.Replace(DataManagerScriptHelper.JavaScriptFunctionStringStart, "(").Replace(DataManagerScriptHelper.JavaScriptFunctionStringEnd, ")");
+            Debug.WriteLine(jstr);
             return Content(jstr, "application/json");
         }
 

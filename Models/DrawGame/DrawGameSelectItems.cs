@@ -20,7 +20,7 @@ namespace FtisHelperDrawGame.DB
     /// </summary>
     public class ActIDSelectItemsClassImp : SelectItemsClass
     {
-        public const string AssemblyQualifiedName = "FtisHelperDrawGame.DB.ActIDSelectItemsClassImp, FtisHelperDrawGame";
+        public const string AssemblyQualifiedName = "FtisHelperDrawGame.DB.ActIDSelectItemsClassImp, DouImp";
 
         protected static IEnumerable<ACTIVITIES> _acts;
         protected static new IEnumerable<ACTIVITIES> ACTS
@@ -50,7 +50,7 @@ namespace FtisHelperDrawGame.DB
     /// </summary>
     public class PrizesSelectItemsClassImp : SelectItemsClass
     {
-        public const string AssemblyQualifiedName = "FtisHelperDrawGame.DB.PrizesSelectItemsClassImp, FtisHelperDrawGame";
+        public const string AssemblyQualifiedName = "FtisHelperDrawGame.DB.PrizesSelectItemsClassImp, DouImp";
 
         protected static IEnumerable<PRIZE> _Prizes;
         internal static new IEnumerable<PRIZE> Prizes

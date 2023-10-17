@@ -69,7 +69,8 @@ namespace DouImp.Controllers.DrawGame
             var groupPrize = PrizejoinAct.GroupBy(x => x.ACTID).Select(g => g.FirstOrDefault()).ToList();
 
             //取得活動清單(透過活動時間篩選，未來需要多加判斷人員權限)
-            var ActsInTimes = Acts.GetAllActs();
+            var lastDate = DateTime.Now.AddDays(-1);
+            var ActsInTimes = db.ACTIVITIES.Where(e => e.STARTTIME < DateTime.Now && e.ENDTIME > lastDate).ToList();
 
             // 預設待入第一筆資料，若無待入""
             string firstGroupPrizeActID = ActsInTimes.Count() > 0 ? ActsInTimes.FirstOrDefault().ACTID : "";
@@ -127,46 +128,55 @@ namespace DouImp.Controllers.DrawGame
             var winners = new List<WINNER>();
             var winners_front = new List<WINNER_Front>();
 
+            // 加入權重
+            participants.Where(e => e.Weight > 1).ToList().ForEach(e =>
+            {
+                for (int index = 1; index < e.Weight; index++)
+                {
+                    participants.Add(e);
+                }
+            });
+
+            // 抽出多個人選
             for (int i = 0; i < newDraws; i++)
             {
                 if (participants.Count == 0)
                     break;
 
+                // 亂數抽獎
                 int randomIndex = new Random().Next(0, participants.Count);
                 var winnerls = participants[randomIndex];
-                participants.RemoveAt(randomIndex);
+                participants = participants.Where(e => e.Name != winnerls.Name).ToList();  //去除同名
 
+                //紀錄贏家拿到的獎品
                 var winner = new WINNER
                 {
+                    Name = winnerls.Name,
                     ACTID = objs.ACTID,
                     FNO = winnerls.FNO,
-                    DCODE = DCodeByFno(winnerls.FNO),
+                    DCODE = winnerls.DCODE,
                     PRIZE = objs.PRIZE,
                     UPDATETIME = DateTime.Now,
                 };
                 winners.Add(winner);
+
+                // 整理給前端的資料
                 var winner_front = new WINNER_Front
                 {
-                    FNAME = NameByFno(winnerls.FNO),
-                    DNICKNAME = DnickNameByDCode(winnerls.DCODE),
+                    FNAME = winnerls.Name,
+                    DNICKNAME = "",
                     PRIZENAME = PrizeNameByPID(intPRIZE),
                 };
                 winners_front.Add(winner_front);
-                var getPrizeEligible = Acts.GetPrize(objs.PRIZE).Where(x => x.PID == intPRIZE).FirstOrDefault().ISSPEC;
-                var part = new PARTICIPANT()
-                {
-                    ACTID = objs.ACTID,
-                    FNO = winnerls.FNO,
-                    DCODE = DCodeByFno(winnerls.FNO),
-                    PASSPHRASE = winnerls.PASSPHRASE,
-                    ISWON = getPrizeEligible ? winnerls.ISWON : true,
-                };
-                db.PARTICIPANTS.Attach(part);
-                db.Entry(part).Property(p => p.ISWON).IsModified = true;
-                db.SaveChanges();
 
-                // 模擬抽獎的間隔時間
-                //Thread.Sleep(1000);
+                // 更新中獎人                                
+                var part = db.PARTICIPANTS.Where(e => e.ACTID == objs.ACTID && e.Name == winnerls.Name).FirstOrDefault();
+                if (part == null) //找不到該對象就拋出，應該不會有此狀況
+                    return Json(new { success = false, desc = "查無此人，" + winnerls.Name }, JsonRequestBehavior.AllowGet);
+
+                //特別獎，所有符合資個的人都可以抽獎，但是單一特別獎裡面不能重複抽到相同的人。                                         
+                var getPrizeEligible = Acts.GetPrize(objs.PRIZE).Where(x => x.PID == intPRIZE).FirstOrDefault().ISSPEC;
+                part.ISWON = getPrizeEligible ? winnerls.ISWON : true; //更新參加人員狀態，若為特別獎則不予理會
             }
 
             db.WINNERS.AddRange(winners);
@@ -237,9 +247,9 @@ namespace DouImp.Controllers.DrawGame
             if (background != null)
             {
                 BgImageUrl = background.BACKGROUND != null ? background.BACKGROUND.ToString() : string.Empty;
-                SelectBgColor = background.SELECTBG.ToString();
-                DisplayFontColor = background.DISPLAYFONTCOLOR.ToString();
-                BtnFontColor = background.BUTTONFONTCOLOR.ToString();
+                SelectBgColor = background.SELECTBG;
+                DisplayFontColor = background.DISPLAYFONTCOLOR;
+                BtnFontColor = background.BUTTONFONTCOLOR;
             }
             ss.Add(BgImageUrl);
             //20231004, add by markhong 新增下拉示選單底色
