@@ -28,13 +28,13 @@ D:\repos\DOULIB\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.CoreCompi
 D:\repos\DOULIB\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.CopyComplete
 D:\repos\DOULIB\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.dll
 D:\repos\DOULIB\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.pdb
-D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.AssemblyReference.cache
-D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.CoreCompileInputs.cache
-D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.dll
-D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.pdb
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\bin\Debug\FtisHelperDrawGame.dll.config
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\bin\Debug\FtisHelperDrawGame.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\bin\Debug\FtisHelperDrawGame.pdb
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\bin\Debug\Newtonsoft.Json.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\bin\Debug\Newtonsoft.Json.xml
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.AssemblyReference.cache
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.CoreCompileInputs.cache
 D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.csproj.CopyComplete
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Debug\FtisHelperDrawGame.pdb

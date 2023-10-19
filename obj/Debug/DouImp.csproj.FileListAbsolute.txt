@@ -437,6 +437,7 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EntityFramework.SqlServer.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EPPlus.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EPPlus.Interfaces.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EPPlus.System.Drawing.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.IO.RecyclableMemoryStream.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.Owin.dll
@@ -450,6 +451,7 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Newtonsoft.Json.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Owin.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\PagedList.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\PagedList.Mvc.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Net.Http.Formatting.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Helpers.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Mvc.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Optimization.dll
@@ -463,6 +465,8 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zxing.presentation.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EntityFramework.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EntityFramework.SqlServer.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\EPPlus.xml
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.pdb
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll.config
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.IO.RecyclableMemoryStream.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.Owin.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.Owin.Host.SystemWeb.xml
@@ -474,11 +478,11 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\bin\PagedList.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\PagedList.Mvc.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Helpers.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Mvc.xml
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Optimization.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Razor.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.WebPages.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.WebPages.Deployment.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.WebPages.Razor.xml
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Web.Optimization.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Newtonsoft.Json.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Antlr3.Runtime.pdb
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zxing.xml
@@ -486,17 +490,13 @@ D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zxing.presentation.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.Helpers.resources.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.Mvc.resources.dll
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.Optimization.resources.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.Razor.resources.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.WebPages.resources.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\bin\zh-Hant\System.Web.Optimization.resources.dll
+D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.AssemblyReference.cache
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.CoreCompileInputs.cache
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.CopyComplete
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.dll
 D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.pdb
-D:\Code\C#\workspace\FTIS-Lottery-Front\obj\Debug\DouImp.csproj.AssemblyReference.cache
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\System.Net.Http.Formatting.dll
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.pdb
-D:\Code\C#\workspace\FTIS-Lottery-Front\bin\FtisHelperDrawGame.dll.config
