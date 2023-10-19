@@ -2,13 +2,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 @{
-         ViewBag.Title = "Lottery App";
+    ViewBag.Title = "Lottery App";
 }
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/Content/fontawesome-6.4.0.min.css" />
     <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
     <script src="~/Scripts/prj/Lottery/lottery.js"></script>
 
@@ -31,7 +32,6 @@
 </style>
 <body>
     <div class="container">
-
         <div class="main-section">
             <div class="wheel-section">
                 <div class="wheel-inside">
@@ -40,14 +40,12 @@
                         <img src="~/images/pointer.png" alt="" />
                     </div>
                 </div>
-                <!-- <button class="btn">開始抽獎</button> -->
             </div>
 
             <div class="display">
                 <h1>獎項 <label id="h1Text"></label></h1>
                 <h1>中獎名單</h1>
-                <div class="display-content grid">
-                </div>
+                <div class="display-content grid container-fluid">             </div>
                 <div class="function-area">
                     <div class="d-flex gap-1">
                         @Html.DropDownList("Activities", null, htmlAttributes: new { @class = "dropdown" })
@@ -60,8 +58,6 @@
                             <i class="fa-solid fa-gift"></i><span>開始抽獎</span>
                         </button>
                         <button class="btn clear mt-2" id="clearButton" onclick="clearWinnerTable()">清除</button>
-                        <button class="btn clear mt-2" id="addButton">新增</button>
-                        <button class="btn clear mt-2" id="deleteButton">刪除</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +73,6 @@
                 submitBackgroundForm();
                 changeActivety(); // 設置onChange，活動下拉選單(#Activities)
                 hideBanner();//全螢幕時自動隱藏功能列
-                autoDeleteFirstWinner();// 超出範圍時自動刪除最前面出中獎名單
             }); // document ready end
 
             const runBtn = document.querySelector('.run-btn'); // 開始抽獎按鈕
@@ -89,9 +84,7 @@
             //監聽按下鍵盤按鍵事件
             document.addEventListener('keydown', function (e) {
                 if (e.code === 'Space') {
-                    console.log(e.code);
                     if ($("#TmpPrizeId").val() != $("#Prizes").val()) {
-                        console.log($("#TmpPrizeId").val(), $("#Prizes").val())
                         clearWinnerTable();
                     }
                     startLottery();
@@ -105,7 +98,6 @@
                 let date2 = new Date();
                 //相差秒數
                 let dateDiff = date2.getTime() - date1.getTime();
-                //console.log("dateDiff = " + dateDiff / 1000);
                 return dateDiff / 1000;
             }
 
@@ -127,7 +119,6 @@
                     //data: { numDraws: numDraws, ACTID: activityId, PRIZE: prizeId },
                     data: fd,
                     success: function (response) {
-                        console.log(response);
                         $('#divPrize').text(response[0]);
                         $('#divPart').text(response[1]);
                     },
@@ -136,9 +127,6 @@
                     }
                 });
             }
-
-
-
 
 
             //開始抽獎
@@ -181,7 +169,18 @@
                             var interval = setInterval(function () {
                                 if (index < winners.length) {
                                     var winner = winners[index];
-                                    displayWinner(winner.FNAME, winner.DNICKNAME, winner.PRIZENAME);
+                                    var display = `
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h3 class="name">
+                                                        <i class="fa-solid fa-gift"></i>
+                                                        <span>$$Name</span>
+                                                    </h3>
+                                                </div>
+                                            </div>`.replace("$$Name", winner.FNAME)
+
+                                    $(".display-content").append(display);
+                                    autoDeleteFirstWinner(); //刪除多於行數
                                     index++;
                                     getPrizeAndParticipantCount();
                                 } else {

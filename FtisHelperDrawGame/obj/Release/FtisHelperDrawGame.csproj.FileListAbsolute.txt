@@ -1,0 +1,2 @@
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Release\FtisHelperDrawGame.csproj.AssemblyReference.cache
+D:\Code\C#\workspace\FTIS-Lottery-Front\FtisHelperDrawGame\obj\Release\FtisHelperDrawGame.csproj.CoreCompileInputs.cache

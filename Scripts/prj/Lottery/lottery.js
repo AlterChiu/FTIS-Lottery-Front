@@ -68,24 +68,8 @@ function clearWinners() {
     });
 }
 
-//顯示得獎者
-function displayWinner(name, department, prize) {
-    var display = $(".display-content");
-
-    const displayName = document.createElement('h3');
-    const nameIcon = document.createElement('i');
-    nameIcon.setAttribute('class', 'fa-solid fa-gift');
-    const nameSpan = document.createElement('span');
-    displayName.setAttribute('class', 'name');
-    nameSpan.innerText = `${department} ${name}`;
-    displayName.append(nameIcon);
-    displayName.append(nameSpan);
-    display.append(displayName);
-}
-
 //20231004, add by markhong 顯示/隱藏Menu
 function hideBanner() {
-    //console.log($("#SHButton").val());
     addEventListener("resize", () => {
         if (window.innerHeight == screen.height)
             $('.fixed-top').hide();
@@ -97,16 +81,15 @@ function hideBanner() {
 // 超出範圍時自動刪除最前面出中獎名單
 function autoDeleteFirstWinner() {
     var content = $(".display-content");
-    content.on("DOMNodeInserted", () => {
-        if (content[0].scrollHeight > content.innerHeight()) {
-            var firstChild = $(".display-content").find('div:first');
-            firstChild.hide({
-                duration: 200, easing: 'linear', complete: function () {
-                    firstChild.remove();
-                }
-            })
-        }
-    })
+    console.log(content[0].scrollHeight + "\t" + content.innerHeight())
+    if ((content[0].scrollHeight - 3) > content.innerHeight()) {
+        var firstChild = $(".display-content").find('div:first');
+        firstChild.hide({
+            duration: 200, easing: 'linear', complete: function () {
+                firstChild.remove();
+            }
+        })
+    }
 }
 
 
